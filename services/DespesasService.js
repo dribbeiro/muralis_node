@@ -64,10 +64,15 @@ class DespesasService {
         })
     }
 
-    getByInterval() {
+    getByInterval(interval =
+        {
+            from: new Date(),
+            to: new Date()
+        }
+    ) {
         return new Promise((resolve, reject) => {
             this.despesasRepository
-                .findByInterval()
+                .findByInterval(interval)
                 .then((rows) => {
                     resolve(rows)
                 })

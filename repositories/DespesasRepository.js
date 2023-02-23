@@ -42,12 +42,7 @@ class DespesasRepository {
         })
     }
 
-    findByInterval(interval =
-        {
-            from: new Date(),
-            to: new Date()
-        }
-    ) {
+    findByInterval(interval) {
         return new Promise((resolve, reject) => {
             interval.from.setUTCHours(0,0,0,0)
             interval.to.setUTCHours(23,59,59,999)

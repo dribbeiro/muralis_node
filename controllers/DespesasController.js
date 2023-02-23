@@ -111,7 +111,10 @@ class DespesasController {
 
     getPDF(req, res) {
         this.despesasService
-            .getByInterval()
+            .getByInterval({
+                from: req.body.from,
+                to: req.body.to
+            })
             .then((despesas) => {
                 this.pdfService
                     .generateDespesas(despesas)
