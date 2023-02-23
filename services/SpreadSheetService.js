@@ -14,7 +14,14 @@ class SpreadSheetService {
                 'Pagamento tipo',
                 'Categoria ID',
                 'Categoria nome',
-                'Categoria descricao'
+                'Categoria descricao',
+                'CEP',
+                'Logradouro',
+                'Complemento',
+                'Bairro',
+                'Localidade',
+                'UF',
+                'Numero'
             ]
     
             const workSheetName = 'Despesas'
@@ -32,7 +39,14 @@ class SpreadSheetService {
                     d.tipo_pagamento_tipo,
                     d.categoria_id,
                     d.categoria_nome,
-                    d.categoria_descricao
+                    d.categoria_descricao,
+                    d.cep,
+                    d.logradouro,
+                    d.complemento,
+                    d.bairro,
+                    d.localidade,
+                    d.uf,
+                    d.numero
                 ])
             ]
 

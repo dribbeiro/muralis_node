@@ -7,8 +7,7 @@ class PDFService {
     generateDespesas(despesas) {
         return new Promise((resolve, reject) => {
             const filePath = './public/file.pdf'
-            const doc = new PDFDocument
-            // const stream  = doc.pipe(blobStream())
+            const doc = new PDFDocument()
 
             doc.pipe(fs.createWriteStream(filePath))
 
@@ -18,6 +17,14 @@ class PDFService {
                 doc.text(`Descrição: ${d.descricao}`)
                 doc.text(`Tipo do pagamento: ${d.tipo_pagamento_tipo}`)
                 doc.text(`Categoria: ${d.categoria_nome}`)
+                doc.text(`CEP: ${d.cep}`)
+                doc.text(`Logradouro: ${d.logradouro}`)
+                doc.text(`Complemento: ${d.complemento}`)
+                doc.text(`Bairro: ${d.bairro}`)
+                doc.text(`Localidade: ${d.localidade}`)
+                doc.text(`UF: ${d.uf}`)
+                doc.text(`Numero: ${d.numero}`)
+                doc.text(' ')
             }
 
             doc.end()

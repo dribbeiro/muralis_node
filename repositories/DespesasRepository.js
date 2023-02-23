@@ -20,7 +20,14 @@ class DespesasRepository {
                     tp.tipo AS tipo_pagamento_tipo,
                     d.categoria_id,
                     c.nome AS categoria_nome,
-                    c.descricao AS categoria_descricao
+                    c.descricao AS categoria_descricao,
+                    d.cep,
+                    d.logradouro,
+                    d.complemento,
+                    d.bairro,
+                    d.localidade,
+                    d.uf,
+                    d.numero
                 FROM ${this._tableName} d
                 JOIN tipos_pagamento tp ON tp.id = d.tipo_pagamento_id
                 JOIN categorias c ON c.id = d.categoria_id
@@ -60,13 +67,19 @@ class DespesasRepository {
                     tp.tipo AS tipo_pagamento_tipo,
                     d.categoria_id,
                     c.nome AS categoria_nome,
-                    c.descricao AS categoria_descricao
+                    c.descricao AS categoria_descricao,
+                    d.cep,
+                    d.logradouro,
+                    d.complemento,
+                    d.bairro,
+                    d.localidade,
+                    d.uf,
+                    d.numero
                 FROM ${this._tableName} d
                 JOIN tipos_pagamento tp ON tp.id = d.tipo_pagamento_id
                 JOIN categorias c ON c.id = d.categoria_id
                 WHERE data_compra BETWEEN ? AND ?
             `
-
         
             this.conn.execute(sql, [fromISO, toISO], (err, rows) => {
                 if(err) { reject(err) }

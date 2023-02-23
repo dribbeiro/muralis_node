@@ -20,7 +20,7 @@ class DespesasService {
     create(despesa) {
         return new Promise((resolve, reject) => {
             this.viaCEPService
-                .get(`08675095`)
+                .get(despesa.cep)
                 .then((endereco) => {
                     despesa.setCep(endereco.cep)
                     despesa.setLogradouro(endereco.logradouro)

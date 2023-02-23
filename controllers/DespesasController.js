@@ -112,13 +112,14 @@ class DespesasController {
     getPDF(req, res) {
         this.despesasService
             .getByInterval({
-                from: req.body.from,
-                to: req.body.to
+                from: new Date(req.query.from),
+                to: new Date(req.query.to)
             })
             .then((despesas) => {
                 this.pdfService
                     .generateDespesas(despesas)
                     .then((filePath) => {
+                        res.setHeader('Content-Type', 'application/pdf')
                         res.download(filePath)
                     })
             })
